@@ -77,23 +77,12 @@ function addParallaxEffect() {
     });
 }
 
-// Add music toggle
-function addMusicToggle() {
-    const musicBtn = document.createElement('button');
-    musicBtn.className = 'music-toggle btn btn-light';
-    musicBtn.innerHTML = '🎵 Toggle Music';
-    musicBtn.onclick = toggleMusic;
-    document.body.appendChild(musicBtn);
-}
-
-// Initialize music toggle
-document.addEventListener('DOMContentLoaded', addMusicToggle);
 
 // Add gallery items with touch-friendly animations
 function addGalleryItems() {
     const gallery = document.querySelector('.gallery-section .row');
     const memories = [
-        { icon: '⏳', caption: 'You waiting for me with love and excitement' },
+        { icon: '⏳', caption: 'You waiting for me with love and excitement for our first meet' },
         { icon: '🍽️', caption: 'Our first lunch together at your sister\'s house' },
         { icon: '🚉', caption: 'You came all the way to Hyderabad just for me' },
         { icon: '🤗', caption: 'Our beautiful meet-ups in Hyderabad' },
@@ -123,32 +112,3 @@ function addGalleryItems() {
 
 // Initialize gallery
 document.addEventListener('DOMContentLoaded', addGalleryItems);
-
-// Add music player with playlist
-function toggleMusic() {
-    const audio = document.querySelector('audio');
-    if (!audio) {
-        const audio = document.createElement('audio');
-        audio.src = 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3';
-        audio.loop = true;
-        audio.volume = 0.3;
-        document.body.appendChild(audio);
-    }
-    
-    // Add playlist functionality
-    const playlist = [
-        'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
-        'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
-        'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3'
-    ];
-    
-    audio.addEventListener('ended', () => {
-        const currentSong = playlist.indexOf(audio.src);
-        const nextSong = (currentSong + 1) % playlist.length;
-        audio.src = playlist[nextSong];
-        audio.play();
-    });
-    
-    audio.paused ? audio.play() : audio.pause();
-    this.textContent = audio.paused ? '🎵 Toggle Music' : '🔇 Toggle Music';
-}
